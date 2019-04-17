@@ -4,7 +4,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
 trigger:
-- sonar
+- master
 
 pool:
   vmImage: 'Ubuntu-16.04'
@@ -14,4 +14,5 @@ variables:
 
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
+  workingDirectory: 'src'
   displayName: 'dotnet build $(buildConfiguration)'
