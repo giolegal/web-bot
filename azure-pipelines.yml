@@ -16,8 +16,19 @@ variables:
 steps:
 - task: DotNetCoreInstaller@0
   inputs:
-    version: '2.2.202' # replace this value with the version that you need for your project
+
+    # replace this value with the version that you need for your project
+    # This version is forced by src/global.json used to force well-defined dotnet version
+    # to avoid using beta version of newest dotnet if installed.
+    version: '2.2.202'
 
 - script: dotnet build --configuration $(buildConfiguration)
   workingDirectory: 'src'
   displayName: 'dotnet build $(buildConfiguration)'
+
+# test and produce output for code coverage for sonar scanner
+- script: dotnet test /p:CoverletOutputFormat=opencover /p:CoverletOutput=./opencover
+  workingDirectory: 'src'
+  displayName: 'dotnet test'
+
+
