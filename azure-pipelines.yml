@@ -30,7 +30,7 @@ steps:
   workingDirectory: 'src'
   displayName: 'install sonar scanner'
 
-- script: dotnet sonarscanner begin /k:"giolegal_web-bot" /o:"giolegal" /d:sonar.host.url=https://sonarcloud.io /d:sonar.login=bb69e5b9d87a4313938f45638932685981ad0a69 /d:sonar.cs.opencover.reportsPaths="coverage.opencover.xml"
+- script: dotnet sonarscanner begin /k:"giolegal_web-bot" /o:"giolegal" /d:sonar.host.url=https://sonarcloud.io /d:sonar.login=$(MY_LOGIN_TOKEN_GENERATED_IN_SONARCLOUD) /d:sonar.cs.opencover.reportsPaths="coverage.opencover.xml"
   workingDirectory: 'src'
   displayName: 'run sonar scanner'
 
@@ -38,5 +38,8 @@ steps:
 - script: dotnet test /p:CoverletOutputFormat=opencover /p:CoverletOutput=./opencover
   workingDirectory: 'src'
   displayName: 'dotnet test'
+
+# send results to sonarcloud
+- script: dotnet sonarscanner end /d:sonar.login=$(MY_LOGIN_TOKEN_GENERATED_IN_SONARCLOUD)
 
 
