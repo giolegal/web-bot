@@ -1,4 +1,9 @@
 bin
 obj
+
 .vs
+
+# fiels create by code coverage and sonar scanner
 .sonarqube
+coverage.json
+coverage.opencover.xml
