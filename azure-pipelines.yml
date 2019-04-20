@@ -15,6 +15,10 @@ variables:
 # do this before all your .NET Core tasks	
 steps:
 
+- script: ls
+  workingDirectory: 'src'
+  displayName: 'ls0'
+
 - script: dotnet build --configuration $(buildConfiguration)
   workingDirectory: 'src'
   displayName: 'dotnet build $(buildConfiguration)'
@@ -22,6 +26,10 @@ steps:
 - script: dotnet tool install -g dotnet-sonarscanner
   workingDirectory: 'src'
   displayName: 'install sonar scanner'
+
+- script: ls
+  workingDirectory: 'src'
+  displayName: 'ls1'
 
 - script: dotnet sonarscanner begin /k:"web-bot" /o:"giolegal" /d:sonar.host.url=https://sonarcloud.io /d:sonar.login=$(MY_LOGIN_TOKEN_GENERATED_IN_SONARCLOUD) /d:sonar.cs.opencover.reportsPaths="coverage.opencover.xml"
   workingDirectory: 'src'
@@ -31,6 +39,10 @@ steps:
 - script: dotnet test /p:CoverletOutputFormat=opencover /p:CoverletOutput=./ /p:CollectCoverage=true /p:Exclude="[xunit.*]"*
   workingDirectory: 'src'
   displayName: 'dotnet test'
+
+- script: ls
+  workingDirectory: 'src'
+  displayName: 'ls2'
 
 # send results to sonarcloud
 - script: dotnet sonarscanner end /d:sonar.login=$(MY_LOGIN_TOKEN_GENERATED_IN_SONARCLOUD)
