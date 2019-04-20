@@ -1,1 +1,1 @@
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=giolegal_web-bot&metric=alert_status)](https://sonarcloud.io/dashboard?id=giolegal_web-bot)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=web-bot&metric=alert_status)](https://sonarcloud.io/dashboard?id=web-bot)

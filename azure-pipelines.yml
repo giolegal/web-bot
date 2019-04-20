@@ -12,6 +12,9 @@ pool:
 variables:
   buildConfiguration: 'Release'
 
+# do this before all your .NET Core tasks	
+steps:
+
 - script: dotnet build --configuration $(buildConfiguration)
   workingDirectory: 'src'
   displayName: 'dotnet build $(buildConfiguration)'
