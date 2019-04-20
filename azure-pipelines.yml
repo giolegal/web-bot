@@ -41,5 +41,7 @@ steps:
 
 # send results to sonarcloud
 - script: dotnet sonarscanner end /d:sonar.login=$(MY_LOGIN_TOKEN_GENERATED_IN_SONARCLOUD)
+  workingDirectory: 'src'
+  displayName: 'push sonar results to cloud'
 
 
