@@ -35,7 +35,7 @@ steps:
   displayName: 'run sonar scanner'
 
 # test and produce output for code coverage for sonar scanner
-- script: dotnet test /p:CoverletOutputFormat=opencover /p:CoverletOutput=./opencover
+- script: dotnet test /p:CoverletOutputFormat=opencover /p:CoverletOutput=./opencover /p:CollectCoverage=true /p:Exclude="[xunit.*]"*
   workingDirectory: 'src'
   displayName: 'dotnet test'
 
