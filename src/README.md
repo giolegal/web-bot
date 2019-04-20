@@ -6,3 +6,6 @@
 * dotnet add package coverlet.msbuild to test projects
 * downgrade coverlet to [2.5.1](https://github.com/tonerdo/coverlet/issues/359)
 * dotnet test /p:CollectCoverage=true /p:Exclude="[xunit*]*"
+* either remove global.json or set [manualy](https://docs.microsoft.com/pl-pl/azure/devops/pipelines/languages/dotnet-core?view=azure-devops) dotnet version 
+* include sonar in build:
+  * https://docs.sonarqube.org/display/SCAN/Install+the+SonarScanner+for+MSBuild
